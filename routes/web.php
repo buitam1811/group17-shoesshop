@@ -200,5 +200,21 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'loginAdmin']
 	Route::post('admin/dang-nhap','Admin\UserController@postAdminLogin');
 
 	Route::get('admin/logout','Admin\UserController@getAdminLogout');
+// Query Builder
 
+Route::get('qb/get',function(){
+    $result = DB::table('product')->get();
+    foreach ($result as $row) {
+    	foreach($row as $key=>$value) {
+        	echo $key.":".$value."<br>";
+    	}
+    }
+    //var_dump($result);
+});
+
+Route::get('qb/get1',function(){
+    $result1 = DB::table('product')->where('id',1)->get()->first();
+    echo $result1->meta_name;
+    //var_dump($result);
+});
 

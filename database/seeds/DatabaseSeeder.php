@@ -69,4 +69,15 @@ class NumberSeeder extends Seeder
             ['so'=>8], ['so'=>9] 
         ]);
     }
-}
+};
+
+// Query Builder
+
+Route::get('qb/get',function(){
+    $result = DB::table('product')->get();
+    foreach ($result as $key => $value) {
+        echo "Hello";
+    }
+    }
+    //var_dump($result);
+});
